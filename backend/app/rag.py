@@ -43,7 +43,7 @@ def ingest_urls(urls: List[str], base_dir: str = "indexes") -> Dict[str, Any]:
     session_path = os.path.join(base_dir, session_id)
     os.makedirs(session_path, exist_ok=True)
 
-    loader = WebBaseLoader(urls=urls)
+    loader = WebBaseLoader(web_paths=urls)
     data = loader.load()
 
     splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=200)
