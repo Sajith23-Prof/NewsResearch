@@ -1,17 +1,32 @@
+# fastapi
+# uvicorn[standard]
+# python-dotenv
+
+# langchain
+# langchain-core
+# langchain-community
+# langchain-text-splitters
+# langchain-huggingface
+# langchain-groq
+
+# faiss-cpu
+# sentence-transformers
+# unstructured
+# requests
+# beautifulsoup4
+# lxml
+
 fastapi
-uvicorn[standard]
+uvicorn
 python-dotenv
 
 langchain
 langchain-core
 langchain-community
-langchain-text-splitters
-langchain-huggingface
 langchain-groq
 
 faiss-cpu
-sentence-transformers
-unstructured
+fastembed
+
 requests
 beautifulsoup4
-lxml

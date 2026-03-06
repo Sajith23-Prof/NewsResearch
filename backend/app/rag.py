@@ -1,11 +1,13 @@
 import os
 import uuid
 from typing import List, Dict, Any
+from langchain_community.embeddings import FastEmbedEmbeddings
+from langchain_community.document_loaders import WebBaseLoader
 
-from langchain_community.document_loaders import UnstructuredURLLoader
+# from langchain_community.document_loaders import UnstructuredURLLoader
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_community.vectorstores import FAISS
-from langchain_huggingface import HuggingFaceEmbeddings
+# from langchain_huggingface import HuggingFaceEmbeddings
 from langchain_groq import ChatGroq
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import StrOutputParser
@@ -26,7 +28,8 @@ def format_docs(docs):
     return "\n\n".join(d.page_content for d in docs)
 
 def get_embeddings():
-    return HuggingFaceEmbeddings(model_name=EMBED_MODEL_NAME)
+    # return HuggingFaceEmbeddings(model_name=EMBED_MODEL_NAME)
+    return FastEmbedEmbeddings(model_name="BAAI/bge-small-en-v1.5")
 
 def get_llm():
     return ChatGroq(
@@ -40,7 +43,7 @@ def ingest_urls(urls: List[str], base_dir: str = "indexes") -> Dict[str, Any]:
     session_path = os.path.join(base_dir, session_id)
     os.makedirs(session_path, exist_ok=True)
 
-    loader = UnstructuredURLLoader(urls=urls)
+    loader = WebBaseLoader(urls=urls)
     data = loader.load()
 
     splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=200)
