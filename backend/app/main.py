@@ -12,7 +12,10 @@ app = FastAPI(title="News RAG API")
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173"],  # React dev
+    allow_origins = [
+    "http://localhost:5173",
+    "https://newsresearch.pages.dev",
+],  # React dev
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
