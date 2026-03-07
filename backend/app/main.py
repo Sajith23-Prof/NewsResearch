@@ -10,17 +10,26 @@ load_dotenv()
 
 app = FastAPI(title="News RAG API")
 
+# app.add_middleware(
+#     CORSMiddleware,
+#     allow_origins = [
+#     "http://localhost:5173",
+#     "https://newsresearch.pages.dev",
+# ],  # React dev
+#     allow_credentials=True,
+#     allow_methods=["*"],
+#     allow_headers=["*"],
+# )
 app.add_middleware(
     CORSMiddleware,
-    allow_origins = [
-    "http://localhost:5173",
-    "https://cc5a2a83.newsresearch.pages.dev",
-],  # React dev
+    allow_origins=[
+        "http://localhost:5173",
+        "https://newsresearch.pages.dev"
+    ],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
-
 class IngestRequest(BaseModel):
     urls: List[HttpUrl]
 
