@@ -14,7 +14,7 @@ app.add_middleware(
     CORSMiddleware,
     allow_origins = [
     "http://localhost:5173",
-    "https://newsresearch.pages.dev",
+    "https://cc5a2a83.newsresearch.pages.dev",
 ],  # React dev
     allow_credentials=True,
     allow_methods=["*"],
